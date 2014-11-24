@@ -1,6 +1,8 @@
 <h1>Dashboard</h1>
 
 <h2>Patients</h2>
+
+<h3>Prescription count: <%= Prescription.count %></h3>
 <table class="table">
   <thead>
   <tr>
@@ -11,6 +13,9 @@
   <% @patients.each do |patient| %>
     <tr>
       <td><%= link_to full_name(patient), patient %></td>
+      <td>
+        <td><%= link_to "Delete", patient_path(patient), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%></td>
+      </td>
     </tr>
   <% end %>
   </tbody>
@@ -27,6 +32,7 @@
   <% @medications.each do |medication| %>
       <tr>
         <td><%= link_to medication.name, medication %></td>
+      <td><%= link_to "Delete", medication_path(medication), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info"%></td>
       </tr>
   <% end %>
   </tbody>
